@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div class='container'>-->
+<!--  <p class='title'>Method 1:</p>-->
+<!--  <div class='bur  method1-bur1'>-->
+<!--  </div>-->
+
+<!--  <div class='bur method1-bur2'>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class='container'>-->
+<!--  <p class='title'>Method 1-1:</p>-->
+<!--  <div class=' bur method1-1-bur1'>-->
+<!--    <span>这是文字</span>-->
+<!--  </div>-->
+
+<!--  <div class='bur method1-1-bur2'>-->
+<!--    <span>这是文字</span>-->
+<!--  </div>-->
+<!--</div>-->
+<div class='container'>
+  <p class='title'>Method 2:</p>
+  <div class=' bur method2-bur1'>
+    <span>这是文字</span>
+  </div>
+
+  <div class='bur method2-bur2'>
+    <span>这是文字</span>
+  </div>
+</div>
+
+<div class='container'>
+  <p class='title'>Method 3:</p>
+  <div class=' bur method4-bur1'>
+    <span>这是文字</span>
+  </div>
+
+  <div class='bur method3-bur2'>
+    <div class='method3-bur2-1'>
+      <span>这是文字</span>
+    </div>
+  </div>
+</div>
+</body>
+<style>
+  .container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    color: white;
+    font-size: 50px;
+    position: relative;
+  }
+  .title {
+    font-size: 20px;
+    width: 100px;
+    height: 100px;
+    color: black;
+  }
+  .bur {
+    width: 400px;
+    height: 400px;
+    background: url(https://images.unsplash.com/photo-1639245458760-fe97102ec94c?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzOTg4NDkzMg&ixlib=rb-1.2.1&q=85)
+    center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .method2-bur2 {
+    /*  让没有背景了，因为统一设置了 */
+    background: inherit;
+    /*  让图片是相对于本身 */
+    position: relative;
+  }
+  .method2-bur2::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(https://images.unsplash.com/photo-1639245458760-fe97102ec94c?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzOTg4NDkzMg&ixlib=rb-1.2.1&q=85)
+    center / cover no-repeat;
+    filter: blur(5px);
+    z-index: -1;
+  }
+
+  .method3-bur2-1 {
+    /*  因为设置了父元素设置了 display：flex 属性，这里必须设置长宽来刚好遮罩住 */
+    width: 400px;
+    height: 400px;
+    /* 关键属性   */
+    backdrop-filter: blur(5px);
+  }
+</style>
+</html>
